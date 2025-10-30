@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-16T01:57:14.407039+00:00",
+  "timestamp": "2025-10-30T02:04:54.997162+00:00",
   "repo": "ietf-wg-wimse/draft-ietf-wimse-arch",
   "labels": [
     {
@@ -1535,6 +1535,30 @@
           "body": "agreed.  thanks for the careful review. ",
           "createdAt": "2025-10-14T15:44:14Z",
           "updatedAt": "2025-10-14T15:44:14Z"
+        }
+      ]
+    },
+    {
+      "number": 106,
+      "id": "I_kwDOLPTb0M7UVR-V",
+      "title": "Terminology for \"Workloads\"",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-arch/issues/106",
+      "state": "OPEN",
+      "author": "hannestschofenig",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "From the virtual interim meeting in October 2025:\n\n> Yaroslav talked about the terminology of \"Workloads\". There are\n> conflicting definitions in other places.\n> \n> Question to the group: Should workload be defined and what definition\n> should we use?\n> \n> Joe: Flemming had some ideas about the definition.\n> \n> Arndt: In loadbalancer situations they do not look independently\n> addressable.\n> \n> Yaroslav: It depends on how you look at them. From the outside, I agree\n> with you. From the inside, they are independently addressable.\n> \n> The current definition is very vague.\n> \n> Joe citing Flemming \"it's important that we support the notion of a\n> workload instance versus a \"service\" that consists of multiple instances\n> of the same SW image\". We probably need to resolve the issue raised by\n> Arndt in some way.\n> \n> Mark: Could we say it is an \"entity\" or \"group of identities\"? It acts\n> as one - that is the key aspect here.\n> \n> Yaroslav: We can expand the definition. Software entity or group o\n> identities.\n> \n> Justin: I suggest to bikeshed this terminology issues on the list (or on\n> github).",
+      "createdAt": "2025-10-28T16:18:35Z",
+      "updatedAt": "2025-10-28T16:26:00Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "hannestschofenig",
+          "authorAssociation": "COLLABORATOR",
+          "body": "There is also another issue with relevance to the terminology topic: https://github.com/ietf-wg-wimse/draft-ietf-wimse-arch/issues/42",
+          "createdAt": "2025-10-28T16:26:00Z",
+          "updatedAt": "2025-10-28T16:26:00Z"
         }
       ]
     }
