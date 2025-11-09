@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-30T02:04:54.997162+00:00",
+  "timestamp": "2025-11-09T02:07:06.379651+00:00",
   "repo": "ietf-wg-wimse/draft-ietf-wimse-arch",
   "labels": [
     {
@@ -1561,6 +1561,22 @@
           "updatedAt": "2025-10-28T16:26:00Z"
         }
       ]
+    },
+    {
+      "number": 107,
+      "id": "I_kwDOLPTb0M7WbZpX",
+      "title": "\"Service Authorization\" section is present twice under Use Cases",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-arch/issues/107",
+      "state": "OPEN",
+      "author": "thibmeu",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "There are two sections named \"Service Authorization\". I believe the one identified as \"#authorization\" is the one to keep, but that's to be checked.\n\nFirst: https://github.com/ietf-wg-wimse/draft-ietf-wimse-arch/blob/44fae95d35ff5c42a6f768ba3a5c07a650fac0fe/draft-ietf-wimse-arch.md#service-authorization-authorization\nSecond: https://github.com/ietf-wg-wimse/draft-ietf-wimse-arch/blob/44fae95d35ff5c42a6f768ba3a5c07a650fac0fe/draft-ietf-wimse-arch.md#service-authorization",
+      "createdAt": "2025-11-06T20:27:54Z",
+      "updatedAt": "2025-11-06T20:27:54Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
