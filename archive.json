@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-11-09T02:07:06.379651+00:00",
+  "timestamp": "2025-11-27T02:02:42.093818+00:00",
   "repo": "ietf-wg-wimse/draft-ietf-wimse-arch",
   "labels": [
     {
@@ -1425,11 +1425,13 @@
       "state": "OPEN",
       "author": "fandreas",
       "authorAssociation": "NONE",
-      "assignees": [],
+      "assignees": [
+        "jsalowey"
+      ],
       "labels": [],
       "body": "This is related to #42 \n\nThe document explicitly defines workloads as \"a running instance of software...\". This is probably ok as long as it is understood that there is also a need to refer to more than one such instance in some cases. The document alludes to this concept in several places, e.g. \n- Section 3.2.1, refers to an \"application system\" and \"workload application\", however this is never defined further\n- Section 3.2.2 mentions a \"service identity\" \n- Section 3.3.2 and 3.3.3 talk about \"Service Authentication\" and \"Service Authorization\"\n- Section 3.3.4 mentions \"workloads and services\"\n\nThere is a need to clearly articulate the difference between referring to a single workload instance versus multiple instances of a given service. The service authentication and authorization sections in particular need to be clear on this distinction. \n\nIf there is general agreement on this need, then I'll be happy to provide a PR with suggested updates. \n\n\n",
       "createdAt": "2025-10-07T01:00:35Z",
-      "updatedAt": "2025-10-14T15:50:41Z",
+      "updatedAt": "2025-11-25T17:37:56Z",
       "closedAt": null,
       "comments": [
         {
@@ -1456,11 +1458,13 @@
       "state": "OPEN",
       "author": "fandreas",
       "authorAssociation": "NONE",
-      "assignees": [],
+      "assignees": [
+        "jsalowey"
+      ],
       "labels": [],
       "body": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-arch/blob/44fae95d35ff5c42a6f768ba3a5c07a650fac0fe/draft-ietf-wimse-arch.md?plain=1#L331\n\nShouldn't the infrastructure service then be shown inside the Trust Boundary in \"Figure 3: External request workload application system\" ? ",
       "createdAt": "2025-10-07T01:04:19Z",
-      "updatedAt": "2025-10-14T20:13:59Z",
+      "updatedAt": "2025-11-25T17:38:35Z",
       "closedAt": null,
       "comments": [
         {
@@ -1546,11 +1550,13 @@
       "state": "OPEN",
       "author": "hannestschofenig",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "jsalowey"
+      ],
       "labels": [],
       "body": "From the virtual interim meeting in October 2025:\n\n> Yaroslav talked about the terminology of \"Workloads\". There are\n> conflicting definitions in other places.\n> \n> Question to the group: Should workload be defined and what definition\n> should we use?\n> \n> Joe: Flemming had some ideas about the definition.\n> \n> Arndt: In loadbalancer situations they do not look independently\n> addressable.\n> \n> Yaroslav: It depends on how you look at them. From the outside, I agree\n> with you. From the inside, they are independently addressable.\n> \n> The current definition is very vague.\n> \n> Joe citing Flemming \"it's important that we support the notion of a\n> workload instance versus a \"service\" that consists of multiple instances\n> of the same SW image\". We probably need to resolve the issue raised by\n> Arndt in some way.\n> \n> Mark: Could we say it is an \"entity\" or \"group of identities\"? It acts\n> as one - that is the key aspect here.\n> \n> Yaroslav: We can expand the definition. Software entity or group o\n> identities.\n> \n> Justin: I suggest to bikeshed this terminology issues on the list (or on\n> github).",
       "createdAt": "2025-10-28T16:18:35Z",
-      "updatedAt": "2025-10-28T16:26:00Z",
+      "updatedAt": "2025-11-25T17:37:49Z",
       "closedAt": null,
       "comments": [
         {
@@ -1570,11 +1576,13 @@
       "state": "OPEN",
       "author": "thibmeu",
       "authorAssociation": "NONE",
-      "assignees": [],
+      "assignees": [
+        "yaroslavros"
+      ],
       "labels": [],
       "body": "There are two sections named \"Service Authorization\". I believe the one identified as \"#authorization\" is the one to keep, but that's to be checked.\n\nFirst: https://github.com/ietf-wg-wimse/draft-ietf-wimse-arch/blob/44fae95d35ff5c42a6f768ba3a5c07a650fac0fe/draft-ietf-wimse-arch.md#service-authorization-authorization\nSecond: https://github.com/ietf-wg-wimse/draft-ietf-wimse-arch/blob/44fae95d35ff5c42a6f768ba3a5c07a650fac0fe/draft-ietf-wimse-arch.md#service-authorization",
       "createdAt": "2025-11-06T20:27:54Z",
-      "updatedAt": "2025-11-06T20:27:54Z",
+      "updatedAt": "2025-11-25T17:36:15Z",
       "closedAt": null,
       "comments": []
     }
