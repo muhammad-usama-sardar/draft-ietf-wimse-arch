@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-11-27T02:02:42.093818+00:00",
+  "timestamp": "2025-12-21T02:23:47.636341+00:00",
   "repo": "ietf-wg-wimse/draft-ietf-wimse-arch",
   "labels": [
     {
@@ -2393,7 +2393,7 @@
       "labels": [],
       "body": "Propose to add one use case of security context establishment and propagation.",
       "createdAt": "2024-06-19T14:10:07Z",
-      "updatedAt": "2024-11-06T05:40:35Z",
+      "updatedAt": "2025-12-20T08:41:10Z",
       "baseRepository": "ietf-wg-wimse/draft-ietf-wimse-arch",
       "baseRefName": "main",
       "baseRefOid": "a24b63e07b642cd2693dfa075592cbd65c93d26d",
@@ -2488,6 +2488,26 @@
           "createdAt": "2024-11-06T03:38:00Z",
           "updatedAt": "2024-11-06T03:38:00Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOLPTb0M7WoSv3",
+          "commit": {
+            "abbreviatedOid": "70ab669"
+          },
+          "author": "jkanywhere",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-12-20T08:40:51Z",
+          "updatedAt": "2025-12-20T08:41:10Z",
+          "comments": [
+            {
+              "originalPosition": 27,
+              "body": "\"PII information\" is redundant.\nConsider instead: \"Personal information leakage\"\nor \"PII leakage\".",
+              "createdAt": "2025-12-20T08:40:51Z",
+              "updatedAt": "2025-12-20T08:41:10Z"
+            }
+          ]
         }
       ]
     },
@@ -4484,6 +4504,32 @@
       "mergeCommit": {
         "oid": "519717f70d15e41bd83988fe471dc285b079c66b"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 108,
+      "id": "PR_kwDOLPTb0M657CTF",
+      "title": "Fix grammar in Basic Workload Identity Scenario section",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-arch/pull/108",
+      "state": "OPEN",
+      "author": "jkanywhere",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Improve the section Basic Workload Identity Scenario by fixing typos and grammar mistakes.\r\n\r\nThis section identifies example workloads using numerals, not words.\r\n\r\nThe phrase \"is authorized to\" typically precedes a verb. The additional comma makes the sentence easier to understand.",
+      "createdAt": "2025-12-20T01:28:24Z",
+      "updatedAt": "2025-12-20T01:28:25Z",
+      "baseRepository": "ietf-wg-wimse/draft-ietf-wimse-arch",
+      "baseRefName": "main",
+      "baseRefOid": "44fae95d35ff5c42a6f768ba3a5c07a650fac0fe",
+      "headRepository": "jkanywhere/draft-ietf-wimse-arch",
+      "headRefName": "grammar-fix-in-Basic-Workload-Identity-Scenario",
+      "headRefOid": "86c5099142e9da6bf6b07f214379d2afe8626ba3",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
