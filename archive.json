@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-12-21T02:23:47.636341+00:00",
+  "timestamp": "2025-12-30T02:19:03.636561+00:00",
   "repo": "ietf-wg-wimse/draft-ietf-wimse-arch",
   "labels": [
     {
@@ -301,7 +301,7 @@
       ],
       "body": "We should add graphical representation of attestation process to simplify reader understanding",
       "createdAt": "2024-03-20T23:03:33Z",
-      "updatedAt": "2025-03-26T18:09:09Z",
+      "updatedAt": "2025-12-29T15:28:41Z",
       "closedAt": null,
       "comments": [
         {
@@ -310,6 +310,13 @@
           "body": "The two mentions of \"Attestation\" are really confusing to me. \nPieter Kasselman and I discussed mapping to RATS and came up with the following: \nAE = Attesting Environment \nTE = Target Environment \n\nHope this would be helpful. \n\n![Image](https://github.com/user-attachments/assets/7adf511b-7278-4eba-b036-72c64c238c95)\n\n",
           "createdAt": "2025-03-26T18:09:07Z",
           "updatedAt": "2025-03-26T18:09:07Z"
+        },
+        {
+          "author": "frumioj",
+          "authorAssociation": "NONE",
+          "body": "Adding a link to the related issue about the definition of the term attestation #109 ",
+          "createdAt": "2025-12-29T15:28:41Z",
+          "updatedAt": "2025-12-29T15:28:41Z"
         }
       ]
     },
@@ -1583,6 +1590,22 @@
       "body": "There are two sections named \"Service Authorization\". I believe the one identified as \"#authorization\" is the one to keep, but that's to be checked.\n\nFirst: https://github.com/ietf-wg-wimse/draft-ietf-wimse-arch/blob/44fae95d35ff5c42a6f768ba3a5c07a650fac0fe/draft-ietf-wimse-arch.md#service-authorization-authorization\nSecond: https://github.com/ietf-wg-wimse/draft-ietf-wimse-arch/blob/44fae95d35ff5c42a6f768ba3a5c07a650fac0fe/draft-ietf-wimse-arch.md#service-authorization",
       "createdAt": "2025-11-06T20:27:54Z",
       "updatedAt": "2025-11-25T17:36:15Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 109,
+      "id": "I_kwDOLPTb0M7gjudM",
+      "title": "Attestation definition",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-arch/issues/109",
+      "state": "OPEN",
+      "author": "frumioj",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Reading the attestation reference in the architecture document to RFC 9683, I was wondering whether:\n\na) In my opinion, it would be better NOT to refer to this specific document, which is very specifically about \"Remote Integrity Verification of Network Devices Containing Trusted Platform Modules\" - do we really only mean TPM-related attestation, or could there be different forms? This reference appears inappropriate for the use-case (although having looked for a more appropriate definition and not found it, I do understand why this was chosen).\nb) There appears no broader (even IETF-wide) definition of attestation. RATS itself does not appear to define attestation anywhere. Would it be appropriate to propose a definition be added to https://www.rfc-editor.org/info/rfc4949 and link to that? Would it be appropriate, for now, to define attestation more broadly at least within the WIMSE context?\nc) WIMSE is focused on an \"agent\" attesting on behalf of a \"workload\" - this use-case is certainly not listed in RATS, and RATS also only describes use-cases backed by hardware. Should the specific WIMSE architecture of workload attestation be listed in RATS as a use-case?",
+      "createdAt": "2025-12-29T13:48:20Z",
+      "updatedAt": "2025-12-29T13:48:20Z",
       "closedAt": null,
       "comments": []
     }
