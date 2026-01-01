@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-12-30T02:19:03.636561+00:00",
+  "timestamp": "2026-01-01T02:30:56.645443+00:00",
   "repo": "ietf-wg-wimse/draft-ietf-wimse-arch",
   "labels": [
     {
@@ -1608,6 +1608,37 @@
       "updatedAt": "2025-12-29T13:48:20Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 110,
+      "id": "I_kwDOLPTb0M7gwRnm",
+      "title": "Security considerations for \"Attestation\" (and Attested TLS)",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-arch/issues/110",
+      "state": "OPEN",
+      "author": "muhammad-usama-sardar",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "As discussed [on list](https://mailarchive.ietf.org/arch/msg/wimse/W5w6aLBWwwonLaNx2j3Ip1mf49U/):\n\nAs I asked in meeting 123 on mic, it is unclear why the architecture document needs to talk about attestation at all. If it does, it has to properly **justify** that and mention the corresponding **security considerations**. Unfortunately, draft-ietf-wimse-arch-06 does neither of those.\n\nIs there any real WIMSE deployment other than SPIRE which actually uses attestation? If so, which one of pre-/intra-/post-handshake attestation is used there? Please point me to protocol specifications.\n\nCould you please point me to concrete WIMSE deployment with some protocol other than TLS?\n\nAmong the security considerations, given that TLS is typical protocol used in WIMSE deployments, it has to mention the [attacks](https://www.researchgate.net/publication/398839141_Identity_Crisis_in_Confidential_Computing_Formal_Analysis_of_Attested_TLS) in security considerations. For reference, formal proof of insecurity is [here](https://github.com/CCC-Attestation/formal-spec-id-crisis). \n\nFor SPIRE: What is important for security considerations is that: Is \"node (or remote) attestation\" done over the same established connection? or is a new connection established each time?\n\nUltimately, workload may connect to some other workload using another TLS connection (assuming that workload is remote). I believe that from security standpoint, what matters most is which attestation artifact (RATS Conceptual Message) is used in that TLS connection. Since all of this attestation (with Server) is done before doing that TLS connection, this is clearly pre-handshake attestation.\n\nIn the Agent - \"Server\" connection, who is the TLS Client and who is the TLS Server? ",
+      "createdAt": "2025-12-30T16:58:27Z",
+      "updatedAt": "2025-12-30T20:44:22Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "strideynet",
+          "authorAssociation": "NONE",
+          "body": "It feels to me reading this as if you may have a different or more specific interpretation of \"attestation\" than the document intends and that this is perhaps why the discussion on the list seems to be running in a circle.\n\nIf I understand you correctly, to you \"attestation\" refers specifically to the process described in RFC 9683, and if I interpret the document correctly, then \"attestation\" is taken much more broadly to refer to any process whereby an agent/server determines characteristics of a workload. Does that sound correct?\n\n> Is there any real WIMSE deployment other than SPIRE which actually uses attestation?\n\nThere are a number of implementations of the SPIFFE specification, other than the SPIRE reference implementation, which implement some more general form of \"attestation\".  That being said, I don't know of any (including SPIRE) that implement \"attestation\" as per RFC 9683.\n\n> Could you please point me to concrete WIMSE deployment with some protocol other than TLS?\n\nI'm not sure I understand what is in scope of your question here? Are you referring only to protocols used when a workload requests and receives a WIC from the agent/server/identity provider (in the case of SPIFFE, this is often without TLS and directly over the Workload API UDS)? Or would workload-workload communication also fall in scope of your question here (for I can think of many examples where TLS may not be used for this).\n",
+          "createdAt": "2025-12-30T17:58:07Z",
+          "updatedAt": "2025-12-30T17:58:07Z"
+        },
+        {
+          "author": "muhammad-usama-sardar",
+          "authorAssociation": "NONE",
+          "body": "> If I understand you correctly, to you \"attestation\" refers specifically to the process described in RFC 9683, and if I interpret the document correctly, then \"attestation\" is taken much more broadly to refer to any process whereby an agent/server determines characteristics of a workload. Does that sound correct?\n\nWhy exactly are you interpreting the document \"much more broadly\" when the [terminology section](https://www.ietf.org/archive/id/draft-ietf-wimse-arch-06.html#section-2-9.1.1) clearly scopes it to RFC9683 and RFC9334 only?\n\nIn any case, \"much more broadly\" implies RFC9683 and RFC9334 are still in scope, and thus attacks are still applicable. Unless attestation is completely removed from the draft OR attestation of RFC9683 and RFC9334 is clearly specified as out of scope of this draft, I don't see any good reason for not mentioning the attacks in the security considerations.\n\n> I'm not sure I understand what is in scope of your question here? Are you referring only to protocols used when a workload requests and receives a WIC from the agent/server/identity provider (in the case of SPIFFE, this is often without TLS and directly over the Workload API UDS)? Or would workload-workload communication also fall in scope of your question here (for I can think of many examples where TLS may not be used for this).\n\nSorry for the confusion. The latter, i.e., workload-workload (or service-service)",
+          "createdAt": "2025-12-30T20:44:22Z",
+          "updatedAt": "2025-12-30T20:44:22Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -4549,6 +4580,66 @@
       "headRepository": "jkanywhere/draft-ietf-wimse-arch",
       "headRefName": "grammar-fix-in-Basic-Workload-Identity-Scenario",
       "headRefOid": "86c5099142e9da6bf6b07f214379d2afe8626ba3",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 111,
+      "id": "PR_kwDOLPTb0M67BGMz",
+      "title": "Attestation definition proposal",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-arch/pull/111",
+      "state": "OPEN",
+      "author": "frumioj",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "See discussion in https://mailarchive.ietf.org/arch/msg/wimse/W5w6aLBWwwonLaNx2j3Ip1mf49U/",
+      "createdAt": "2025-12-30T19:29:13Z",
+      "updatedAt": "2025-12-30T19:30:09Z",
+      "baseRepository": "ietf-wg-wimse/draft-ietf-wimse-arch",
+      "baseRefName": "main",
+      "baseRefOid": "44fae95d35ff5c42a6f768ba3a5c07a650fac0fe",
+      "headRepository": "frumioj/wimse-arch",
+      "headRefName": "patch-2",
+      "headRefOid": "8862c8304a5322621292b41abac55d5e3a8c2e71",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "frumioj",
+          "authorAssociation": "NONE",
+          "body": "Might resolve #109 ",
+          "createdAt": "2025-12-30T19:30:09Z",
+          "updatedAt": "2025-12-30T19:30:09Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 112,
+      "id": "PR_kwDOLPTb0M67Bi1Z",
+      "title": "JK review part I - as far as line 206",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-arch/pull/112",
+      "state": "OPEN",
+      "author": "frumioj",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Editorial changes only.",
+      "createdAt": "2025-12-30T20:22:48Z",
+      "updatedAt": "2025-12-30T20:22:49Z",
+      "baseRepository": "ietf-wg-wimse/draft-ietf-wimse-arch",
+      "baseRefName": "main",
+      "baseRefOid": "44fae95d35ff5c42a6f768ba3a5c07a650fac0fe",
+      "headRepository": "frumioj/wimse-arch",
+      "headRefName": "patch-3",
+      "headRefOid": "592ab93c552ab416fe7f4ded39bcb4732e9c7774",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
