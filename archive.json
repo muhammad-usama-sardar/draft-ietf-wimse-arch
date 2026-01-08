@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-01-01T02:30:56.645443+00:00",
+  "timestamp": "2026-01-08T02:21:17.681727+00:00",
   "repo": "ietf-wg-wimse/draft-ietf-wimse-arch",
   "labels": [
     {
@@ -1621,7 +1621,7 @@
       "labels": [],
       "body": "As discussed [on list](https://mailarchive.ietf.org/arch/msg/wimse/W5w6aLBWwwonLaNx2j3Ip1mf49U/):\n\nAs I asked in meeting 123 on mic, it is unclear why the architecture document needs to talk about attestation at all. If it does, it has to properly **justify** that and mention the corresponding **security considerations**. Unfortunately, draft-ietf-wimse-arch-06 does neither of those.\n\nIs there any real WIMSE deployment other than SPIRE which actually uses attestation? If so, which one of pre-/intra-/post-handshake attestation is used there? Please point me to protocol specifications.\n\nCould you please point me to concrete WIMSE deployment with some protocol other than TLS?\n\nAmong the security considerations, given that TLS is typical protocol used in WIMSE deployments, it has to mention the [attacks](https://www.researchgate.net/publication/398839141_Identity_Crisis_in_Confidential_Computing_Formal_Analysis_of_Attested_TLS) in security considerations. For reference, formal proof of insecurity is [here](https://github.com/CCC-Attestation/formal-spec-id-crisis). \n\nFor SPIRE: What is important for security considerations is that: Is \"node (or remote) attestation\" done over the same established connection? or is a new connection established each time?\n\nUltimately, workload may connect to some other workload using another TLS connection (assuming that workload is remote). I believe that from security standpoint, what matters most is which attestation artifact (RATS Conceptual Message) is used in that TLS connection. Since all of this attestation (with Server) is done before doing that TLS connection, this is clearly pre-handshake attestation.\n\nIn the Agent - \"Server\" connection, who is the TLS Client and who is the TLS Server? ",
       "createdAt": "2025-12-30T16:58:27Z",
-      "updatedAt": "2025-12-30T20:44:22Z",
+      "updatedAt": "2026-01-06T21:22:41Z",
       "closedAt": null,
       "comments": [
         {
@@ -1637,6 +1637,13 @@
           "body": "> If I understand you correctly, to you \"attestation\" refers specifically to the process described in RFC 9683, and if I interpret the document correctly, then \"attestation\" is taken much more broadly to refer to any process whereby an agent/server determines characteristics of a workload. Does that sound correct?\n\nWhy exactly are you interpreting the document \"much more broadly\" when the [terminology section](https://www.ietf.org/archive/id/draft-ietf-wimse-arch-06.html#section-2-9.1.1) clearly scopes it to RFC9683 and RFC9334 only?\n\nIn any case, \"much more broadly\" implies RFC9683 and RFC9334 are still in scope, and thus attacks are still applicable. Unless attestation is completely removed from the draft OR attestation of RFC9683 and RFC9334 is clearly specified as out of scope of this draft, I don't see any good reason for not mentioning the attacks in the security considerations.\n\n> I'm not sure I understand what is in scope of your question here? Are you referring only to protocols used when a workload requests and receives a WIC from the agent/server/identity provider (in the case of SPIFFE, this is often without TLS and directly over the Workload API UDS)? Or would workload-workload communication also fall in scope of your question here (for I can think of many examples where TLS may not be used for this).\n\nSorry for the confusion. The latter, i.e., workload-workload (or service-service)",
           "createdAt": "2025-12-30T20:44:22Z",
           "updatedAt": "2025-12-30T20:44:22Z"
+        },
+        {
+          "author": "muhammad-usama-sardar",
+          "authorAssociation": "NONE",
+          "body": "Proposed text: \n\nSection 4.5: Attestation\n\nWhen attestation is used, the security considerations of [RFC9334] apply. When TLS is used as the transport protocol in pre-handshake attestation form, such as [Intel's RA-TLS], it may be vulnerable to replay attacks [2]. When TLS is used as the transport protocol in intra-handshake attestation form, such as [draft-fossati-tls-attestation-09], it may be vulnerable to diversion attacks [2]. These risks can be mitigated by using post-handshake attestation [2].\n\n[2] https://www.researchgate.net/publication/398839141_Identity_Crisis_in_Confidential_Computing_Formal_Analysis_of_Attested_TLS\n\n[Intel's RA-TLS][ https://arxiv.org/pdf/1801.05863](https://arxiv.org/pdf/1801.05863)",
+          "createdAt": "2026-01-06T21:22:41Z",
+          "updatedAt": "2026-01-06T21:22:41Z"
         }
       ]
     }
@@ -4599,13 +4606,13 @@
       "labels": [],
       "body": "See discussion in https://mailarchive.ietf.org/arch/msg/wimse/W5w6aLBWwwonLaNx2j3Ip1mf49U/",
       "createdAt": "2025-12-30T19:29:13Z",
-      "updatedAt": "2025-12-30T19:30:09Z",
+      "updatedAt": "2026-01-07T18:54:32Z",
       "baseRepository": "ietf-wg-wimse/draft-ietf-wimse-arch",
       "baseRefName": "main",
       "baseRefOid": "44fae95d35ff5c42a6f768ba3a5c07a650fac0fe",
       "headRepository": "frumioj/wimse-arch",
       "headRefName": "patch-2",
-      "headRefOid": "8862c8304a5322621292b41abac55d5e3a8c2e71",
+      "headRefOid": "8121e19b469a74008104500af7efe86b993ca06a",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -4619,7 +4626,134 @@
           "updatedAt": "2025-12-30T19:30:09Z"
         }
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOLPTb0M7Ybjf4",
+          "commit": {
+            "abbreviatedOid": "8862c83"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-01-06T14:25:16Z",
+          "updatedAt": "2026-01-06T14:26:42Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "> and providing that [attestation evidence] to a communication peer\n\nThis is not the case in SPIFFE. A workload does not receive the attested attributed from the agent but only a credential. ",
+              "createdAt": "2026-01-06T14:25:16Z",
+              "updatedAt": "2026-01-06T14:26:42Z"
+            },
+            {
+              "originalPosition": 8,
+              "body": "> while compatible with the definitions and architectures described in {{!RFC9334}}\n\nI'd like to keep the compatibility with RFC9334 optional.",
+              "createdAt": "2026-01-06T14:26:34Z",
+              "updatedAt": "2026-01-06T14:26:43Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPTb0M7YdNlR",
+          "commit": {
+            "abbreviatedOid": "8862c83"
+          },
+          "author": "frumioj",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-01-06T16:19:05Z",
+          "updatedAt": "2026-01-06T16:19:06Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "> > and providing that [attestation evidence] to a communication peer\r\n> \r\n> This is not the case in SPIFFE. A workload does not receive the attested attributed from the agent but only a credential.\r\n\r\nThe SPIRE agent, however, attests to the SPIRE server, giving measurements about itself, no, in \"node attestation\"?",
+              "createdAt": "2026-01-06T16:19:06Z",
+              "updatedAt": "2026-01-06T16:19:06Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPTb0M7YdPlS",
+          "commit": {
+            "abbreviatedOid": "8862c83"
+          },
+          "author": "frumioj",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-01-06T16:21:08Z",
+          "updatedAt": "2026-01-06T16:21:08Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "If I used the word 'aligned' instead of 'compatible' would that be sufficient?",
+              "createdAt": "2026-01-06T16:21:08Z",
+              "updatedAt": "2026-01-06T16:21:08Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPTb0M7YlpVm",
+          "commit": {
+            "abbreviatedOid": "8862c83"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-01-07T08:01:23Z",
+          "updatedAt": "2026-01-07T08:01:23Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "This is a specific to SPIRE (and an internal API in it). The standard SPIFFE interface only returns a credential.\r\nAlso, the workload itself is not aware of and does not participate in the attestation process. This process has been identified, if I remember correctly, as the biggest difference with attestation processes of RATS and confidential computing. SPIFFE does not want the workload to be involved.",
+              "createdAt": "2026-01-07T08:01:23Z",
+              "updatedAt": "2026-01-07T08:04:36Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPTb0M7Ylq_t",
+          "commit": {
+            "abbreviatedOid": "8862c83"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-01-07T08:04:01Z",
+          "updatedAt": "2026-01-07T08:04:01Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "I'm ok with aligned. What's important is that the SPIFFE-attestation flow above is covered. It differs in the way that workloads don't participate in it where in RATS it collects the evidence.",
+              "createdAt": "2026-01-07T08:04:01Z",
+              "updatedAt": "2026-01-07T08:04:02Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPTb0M7YvmaV",
+          "commit": {
+            "abbreviatedOid": "8862c83"
+          },
+          "author": "frumioj",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-01-07T18:51:52Z",
+          "updatedAt": "2026-01-07T18:51:52Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "As I read the SPIFFE architecture documents I see two types of attestation, and I believe they **_could be_** both aligned with RATS:\r\n\r\n1. Node attestation, during which, the SPIRE agent collects evidence from the host node, and presents it to the SPIRE server, in order to receive the agent identity. I believe the agent is acting as the RATS attester, and the server is acting as BOTH a RATS verifier (depending on verification by a third party - e.g. AWS instance metadata) AND a relying party.\r\n2. Workload attestation, where the SPIRE agent is a RATS verifier, **_a second workload_** receiving a message from this workload will be effectively a RATS relying party, and the first workload will be the attester.\r\n\r\nWhat do you see as any issue with the above? Is this something I could just ask RATS about or have you had those discussions already @arndt-s ?",
+              "createdAt": "2026-01-07T18:51:52Z",
+              "updatedAt": "2026-01-07T18:51:53Z"
+            }
+          ]
+        }
+      ]
     },
     {
       "number": 112,
