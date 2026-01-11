@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-01-08T02:21:17.681727+00:00",
+  "timestamp": "2026-01-11T02:32:03.528993+00:00",
   "repo": "ietf-wg-wimse/draft-ietf-wimse-arch",
   "labels": [
     {
@@ -4606,7 +4606,7 @@
       "labels": [],
       "body": "See discussion in https://mailarchive.ietf.org/arch/msg/wimse/W5w6aLBWwwonLaNx2j3Ip1mf49U/",
       "createdAt": "2025-12-30T19:29:13Z",
-      "updatedAt": "2026-01-07T18:54:32Z",
+      "updatedAt": "2026-01-08T12:20:50Z",
       "baseRepository": "ietf-wg-wimse/draft-ietf-wimse-arch",
       "baseRefName": "main",
       "baseRefOid": "44fae95d35ff5c42a6f768ba3a5c07a650fac0fe",
@@ -4750,6 +4750,26 @@
               "body": "As I read the SPIFFE architecture documents I see two types of attestation, and I believe they **_could be_** both aligned with RATS:\r\n\r\n1. Node attestation, during which, the SPIRE agent collects evidence from the host node, and presents it to the SPIRE server, in order to receive the agent identity. I believe the agent is acting as the RATS attester, and the server is acting as BOTH a RATS verifier (depending on verification by a third party - e.g. AWS instance metadata) AND a relying party.\r\n2. Workload attestation, where the SPIRE agent is a RATS verifier, **_a second workload_** receiving a message from this workload will be effectively a RATS relying party, and the first workload will be the attester.\r\n\r\nWhat do you see as any issue with the above? Is this something I could just ask RATS about or have you had those discussions already @arndt-s ?",
               "createdAt": "2026-01-07T18:51:52Z",
               "updatedAt": "2026-01-07T18:51:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPTb0M7Y6Qxc",
+          "commit": {
+            "abbreviatedOid": "8862c83"
+          },
+          "author": "arndt-s",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-01-08T12:20:49Z",
+          "updatedAt": "2026-01-08T12:20:50Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "The documents you're seeing are very likely SPIRE documents, and not the SPIFFE standard, exclusively available in [Github markdown](https://github.com/spiffe/spiffe/tree/main/standards). SPIFFE as such doesn't actually talk about attestation at all but assumes it. SPIRE, a specific implementation of SPIFFE, has then done a lot of work documenting its architecture which includes these 2 different ways of attestation (node & workload)\r\n\r\n\"SPIRE Node Attestation\": Other SPIFFE implementations may choose and have chosen to use other ways to connect their SPIFFE servers (like SPIRE agents) to the signing infrastructure (like SPIRE servers). They may use mechanism that involves collecting evidence and sending it to a peer but may also just use simple authentication mechanisms (for instance like SPIRE agent join tokens).\r\n\r\n\"SPIRE Workload Attestation\" (very similar to what the other implementations have done) relies on the SPIRE agent being able to identify the workload using the operating system and/or workload platform (mostly Kubernetes). It is important to highlight that **the workload does not identify itself towards the server.** It purely requests a credential without any data what so ever. \r\n\r\nThis here is the request definition of an X.509-SVID in the [SPIFFE Workload API](https://github.com/spiffe/spiffe/blob/main/standards/SPIFFE_Workload_API.md#52-profile-rpcs)\r\n```\r\n// The X509SVIDRequest message conveys parameters for requesting an X.509-SVID.\r\n// There are currently no such parameters.\r\nmessage X509SVIDRequest {  }\r\n```\r\nEven if the workload wanted to, it is actually not able to provide any information about itself. SPIFFE has simply chosen to not allow those parameters in the request. It is then up to the server to identify the workload by for instance asking the OS which process has made that call or relying on Kubernetes to make sure the caller is identified. Often, both are used in combination. TLDR: The workload does not provide evidence and sends it, but the server collects it from the underlying trusted platform.",
+              "createdAt": "2026-01-08T12:20:50Z",
+              "updatedAt": "2026-01-08T12:24:08Z"
             }
           ]
         }
