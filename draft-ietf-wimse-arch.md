@@ -45,7 +45,7 @@ informative:
       - ins: T. Aura
   Intel-RA-TLS:
     title: "Identity Crisis in Confidential Computing: Formal Analysis of Attested TLS"
-    date: November 2025,
+    date: July 2019,
     target: https://arxiv.org/pdf/1801.05863
     author:
       - ins: Thomas Knauth
