@@ -44,7 +44,7 @@ informative:
       - ins: M. Moustafa
       - ins: T. Aura
   Intel-RA-TLS:
-    title: "Identity Crisis in Confidential Computing: Formal Analysis of Attested TLS"
+    title: "Integrating Remote Attestation with Transport Layer Security"
     date: July 2019,
     target: https://arxiv.org/pdf/1801.05863
     author:
